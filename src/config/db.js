@@ -6,9 +6,8 @@ const pool = new Pool({
   user: process.env.DB_USER, // Render DB username
   password: process.env.DB_PASSWORD, // Render DB password
   database: process.env.DB_NAME, // Render DB name
-  ssl: {
-    rejectUnauthorized: false, // Required for connecting to Render DB
-  },
+  ssl: true, // Use this if Render enforces SSL with default configurations
+
 });
 
 pool.on('connect', () => {
