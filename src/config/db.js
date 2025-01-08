@@ -1,11 +1,23 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-  host: process.env.DB_HOST || 'localhost',
-  port: process.env.DB_PORT || 5432,
-  user: process.env.DB_USER || 'postgres',
-  password: process.env.DB_PASSWORD || 'Sk@123456!',
-  database: process.env.DB_NAME || 'postgres',
+  host: process.env.DB_HOST, // Render DB host
+  port: process.env.DB_PORT, // Render DB port
+  user: process.env.DB_USER, // Render DB username
+  password: process.env.DB_PASSWORD, // Render DB password
+  database: process.env.DB_NAME, // Render DB name
+  ssl: {
+    rejectUnauthorized: false, // Required for connecting to Render DB
+  },
+});
+
+pool.on('connect', () => {
+  console.log('Connected to the database');
+});
+
+pool.on('error', (err) => {
+  console.error('Unexpected error on idle client', err);
+  process.exit(-1);
 });
 
 module.exports = pool;

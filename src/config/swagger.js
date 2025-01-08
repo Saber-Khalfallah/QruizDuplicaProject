@@ -10,7 +10,8 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: 'http://localhost:3000', // Replace with your actual base URL
+                url: 'https://qruizduplicaproject.onrender.com/', // Replace with your actual base URL
+                
             },
         ],
     },
