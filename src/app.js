@@ -42,6 +42,8 @@ app.use('/api/content-analytics', contentAnalyticsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
+  console.log(process.env.DB_HOST, process.env.DB_PORT, process.env.DB_USER, process.env.DB_NAME);
+
 });
 const errorHandler = require('./middleware/errorHandler');
 
