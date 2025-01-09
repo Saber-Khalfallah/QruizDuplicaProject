@@ -16,12 +16,13 @@ const registerUser = async (username, email, password) => {
       const { password_hash, ...safeUserData } = result.rows[0];
       return safeUserData;
   } catch (err) {
-    console.error('Detailed error:', err); // Log the error for debugging
-    res.status(500).json({
-      success: false,
-      message: 'Database error during registration',
-      details: err.message, // Include error details in the response for debugging
-    });
+      console.error('Detailed error:', err); // Log the error for debugging
+      res.status(500).json({
+        success: false,
+        message: 'Database error during registration',
+        details: err.message, // Include error details in the response for debugging
+      });
+  }
 };
 
 
