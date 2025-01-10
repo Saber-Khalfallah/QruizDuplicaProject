@@ -8,7 +8,7 @@ const participantRoutes = require('./routes/participantRoutes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerSpecs = require('./config/swagger');
 const contentAnalyticsRoutes = require('./routes/contentAnalyticsRoutes');
-const pool = require('../config/db'); // Adjust the path to match your project structure
+const pool = require('./config/db'); // Adjust the path to match your project structure
 
 
 
