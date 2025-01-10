@@ -20,6 +20,7 @@ const testQuery = async () => {
         console.error('Query failed:');
         console.error('Error message:', err.message);
         console.error('Stack trace:', err.stack);
+        console.log('db url : ',process.env.DATABASE_URL);
     } finally {
         pool.end();
     }
