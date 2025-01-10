@@ -46,6 +46,7 @@ app.get('/test-db', async (req, res) => {
     res.json({ success: true, time: result.rows[0] });
   } catch (error) {
     console.error('Database connection error:', error.stack );
+    console.log('db url : ',process.env.DATABASE_URL);
     res.status(500).json({ success: false, error: error.message });
   }
 });
