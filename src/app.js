@@ -39,6 +39,15 @@ app.use('/content', linkAccessRoutes);
 app.use('/api/content-elements', contentElementsRoutes); 
 app.use('/api/participate', participantRoutes);
 app.use('/api/content-analytics', contentAnalyticsRoutes);
+app.get('/test-db', async (req, res) => {
+  try {
+    const result = await pool.query('SELECT NOW()');
+    res.json({ success: true, time: result.rows[0] });
+  } catch (error) {
+    console.error('Database connection error:', error);
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
