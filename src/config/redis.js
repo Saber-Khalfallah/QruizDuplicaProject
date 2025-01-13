@@ -1,11 +1,8 @@
 const { createClient } = require('redis');
 
-// Redis client for local installation
+// Redis client for Render Redis Cloud
 const redisClient = createClient({
-    socket: {
-        host: '127.0.0.1', // Default localhost
-        port: 6379,        // Default Redis port
-    },
+    url: process.env.REDIS_URL, // Use REDIS_URL from environment variables
 });
 
 // Handle Redis client errors
@@ -15,9 +12,9 @@ redisClient.on('error', (err) => console.error('Redis Client Error:', err));
 (async () => {
     try {
         await redisClient.connect();
-        console.log('Connected to Redis locally');
+        console.log('Connected to Redis on Render');
     } catch (err) {
-        console.error('Error connecting to local Redis:', err);
+        console.error('Error connecting to Redis:', err);
     }
 })();
 
