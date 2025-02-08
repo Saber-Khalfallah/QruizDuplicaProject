@@ -16,7 +16,7 @@ const {
 
 /**
  * @swagger
- * /api/participant/{link}:
+ * /api/participate/{link}:
  *   get:
  *     summary: Fetch content and elements for participation.
  *     tags: [Participant]
@@ -37,7 +37,7 @@ router.get('/:link', validateLink, getParticipantContent);
 
 /**
  * @swagger
- * /api/participant/{link}:
+ * /api/participate/{link}:
  *   post:
  *     summary: Submit responses for participation.
  *     tags: [Participant]

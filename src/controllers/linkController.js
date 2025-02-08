@@ -19,10 +19,9 @@ exports.generateLink = async (req, res, next) => {
             return res.status(403).json({ error: 'Access denied or content not found' });
         }
 
-        // Generate a unique link
+ 
         const uniqueLink = crypto.randomBytes(16).toString('hex');
-
-        // Insert the link into the database
+e
         const insertLinkQuery = `
             INSERT INTO links (content_id, link, expiration_date, max_access)
             VALUES ($1, $2, $3, $4)
@@ -35,7 +34,7 @@ exports.generateLink = async (req, res, next) => {
             maxAccess || null,
         ]);
 
-        // Store the secret code in Redis if provided
+       
         if (secretCode) {
             await redisClient.setEx(`content:${uniqueLink}:secret_code`, 3600, secretCode); // Expires in 1 hour
         }
