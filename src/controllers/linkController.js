@@ -21,7 +21,7 @@ exports.generateLink = async (req, res, next) => {
 
  
         const uniqueLink = crypto.randomBytes(16).toString('hex');
-e
+
         const insertLinkQuery = `
             INSERT INTO links (content_id, link, expiration_date, max_access)
             VALUES ($1, $2, $3, $4)
